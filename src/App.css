@@ -1,38 +1,78 @@
-.App {
+.something {
+  border: 1px solid red;
+  margin: 10px;
+  padding: 10px;
+}
+
+.button {
+  border: 0;
+  background-color: black;
+  color: white;
+  padding: 5px;
+  margin: 5px;
+}
+
+.button.active {
+  background-color: orange;
+  color: black;
+}
+
+.question-container {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid;
+}
+
+.post-item-container {
+  margin: 10px;
+  padding: 10px;
+  width: 400px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.app-header {
+  height: 120px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: skyblue;
+  margin-bottom: 2rem;
+}
+
+.app-header h1 {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgb(10, 81, 153), rgb(26, 26, 132));
+}
+
+.login-form {
+  width: 300px;
+  height: 200px;
+  padding: 2rem;
+  background: white;
+  border-radius: 5px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.action-container {
+  padding: 0.5rem;
+  border-top: 1px solid gray;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-around;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.avatar-icon-container {
+  display: inline-block;
 }

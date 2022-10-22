@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
-
+import CatFacts from './Pages/CatFact/CatFacts';
+import Login from './Pages/Login/Login';
+import PostList from './Pages/PostList/PostList';
+import MyButton from './Shared/Components/MyButton';
+import Rating from './Shared/Components/Rating';
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+     
+      <div>
+        <Routes>
+          <Route path='/posts-list' element={<PostList />} />
+          <Route path='/login' element={<Login/>} />
+          <Route path='/cat-fact' element={<CatFacts />} />
+          <Route path='/' element={<Navigate to={'/login'} />} />
+        </Routes>
+      </div>
+
     </div>
   );
 }

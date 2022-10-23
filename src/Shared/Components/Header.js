@@ -31,6 +31,14 @@ export default function Header() {
                 <MyButton label={'Cat Fact'}></MyButton>
             </Link>
 
+            <Link to={'/questions'}>
+                <MyButton label={'Questions'}></MyButton>
+            </Link>
+
+            <Link to={'/add-question'}>
+                <MyButton label={'Add Question'}></MyButton>
+            </Link>
+
         </div>
     )
 }

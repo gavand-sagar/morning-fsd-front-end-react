@@ -13,7 +13,7 @@ export default function AddQuestion() {
             questionText: question
         }
 
-        customPost(`http://localhost:3001/questions`, obj)
+        customPost(`/questions`, obj)
             .then(response => {
                 if (response.result == true) {
                     alert('Post added.')

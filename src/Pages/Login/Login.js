@@ -14,7 +14,7 @@ export default function Login() {
     function login() {
 
         if (username && password) {
-            customGet(`http://localhost:3001/authenticate?username=${username}&password=${password}`)
+            customGet(`/authenticate?username=${username}&password=${password}`)
                 .then(response => {
 
                     if (response.result == true) {
@@ -47,7 +47,7 @@ export default function Login() {
             password: password
         }
 
-        customPost(`http://localhost:3001/create-new-user`, obj)
+        customPost(`/create-new-user`, obj)
             .then(response => {
 
                 if (response.result == true) {

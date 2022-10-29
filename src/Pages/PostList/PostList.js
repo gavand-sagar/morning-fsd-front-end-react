@@ -13,7 +13,7 @@ export default function PostList() {
 
     function getAllPosts() {
 
-        customGet('http://localhost:3001/posts')
+        customGet('/posts')
             .then(response => {
                 setPosts(response.concat([]))
             })
@@ -28,7 +28,7 @@ export default function PostList() {
             content: content
         }
 
-        customPost(`http://localhost:3001/posts`, obj)
+        customPost(`/posts`, obj)
             .then(response => {
                 if (response.result == true) {
                     alert('Post added.')

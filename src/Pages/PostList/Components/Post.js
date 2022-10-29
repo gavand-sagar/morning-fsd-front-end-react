@@ -14,7 +14,7 @@ export default function Post({ item }) {
         let obj = {
             username: localStorage.getItem('usernameValue')
         }
-        customPatch(`http://localhost:3001/posts/${item._id}/like`, obj)
+        customPatch(`/posts/${item._id}/like`, obj)
             .then(response => {
                 //do something // create a state
                 setLikes(response.newLikes)
@@ -27,7 +27,7 @@ export default function Post({ item }) {
             username: localStorage.getItem('usernameValue'),
             commentText: commentBox
         }
-        customPost(`http://localhost:3001/posts/${item._id}/comments`, obj)
+        customPost(`/posts/${item._id}/comments`, obj)
             .then(response => {
                 setComments(response.newComments)
             })

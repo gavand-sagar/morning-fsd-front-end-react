@@ -6,7 +6,7 @@ export default function SquareCalculatorWithApi() {
     const [number, setNumber] = useState(0);
 
     function getSquare() {
-        fetch(`http://localhost:3001/square-of-number?number=${number}`)
+        fetch(`/square-of-number?number=${number}`)
             .then(s => s.json())
             .then(response => {
                 // anything after response

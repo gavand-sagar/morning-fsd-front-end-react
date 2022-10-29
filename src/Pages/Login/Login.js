@@ -62,6 +62,7 @@ export default function Login() {
     return (
         <div className="login-page">
             <div class='login-form'>
+                <h2>Login</h2>
                 <TextField variant="outlined" value={username} onChange={e => setUsername(e.target.value)} type='text' label='Username' />
                 <br></br>
                 <br></br>

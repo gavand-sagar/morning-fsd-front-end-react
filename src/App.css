@@ -54,7 +54,7 @@
   right: 0;
   top: 0;
   bottom: 0;
-  background: linear-gradient(to right, rgb(10, 81, 153), rgb(26, 26, 132));
+  background: linear-gradient(to right, red, red);
 }
 
 .login-form {

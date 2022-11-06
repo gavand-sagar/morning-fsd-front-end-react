@@ -21,7 +21,7 @@ export default function Login() {
                         // setting info in local-storage to have global access
 
                         localStorage.setItem('usernameValue', username)
-
+                        localStorage.setItem('token',response.token)
                         ////  we want to change this line 
                         // just to navigate user to post page after successful login
                         // are you with me on that?
@@ -66,7 +66,7 @@ export default function Login() {
                 <TextField variant="outlined" value={username} onChange={e => setUsername(e.target.value)} type='text' label='Username' />
                 <br></br>
                 <br></br>
-                <TextField variant="outlined" value={password} onChange={e => setPassword(e.target.value)} type='text' label='Password' />
+                <TextField variant="outlined" value={password} onChange={e => setPassword(e.target.value)} type='password' label='Password' />
                 <br></br>
                 <br></br>
                 <Button variant="contained" onClick={login}>Login</Button>&nbsp;

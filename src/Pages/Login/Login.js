@@ -2,6 +2,7 @@ import { Button, TextField } from '@mui/material'
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import MyButton from '../../Shared/Components/MyButton'
 import { customGet, customPost } from '../../Utilitites/custom-fetch'
 
 export default function Login() {
@@ -68,8 +69,8 @@ export default function Login() {
                 <br></br>
                 <TextField variant="outlined" value={password} onChange={e => setPassword(e.target.value)} type='password' label='Password' />
                 <br></br>
-                <br></br>
-                <Button variant="contained" onClick={login}>Login</Button>&nbsp;
+                <br></br>               
+                <Button variant="contained" onClick={login}>  Login  </Button>&nbsp;
                 <Button variant="outlined" onClick={signUp}>SignUp</Button>
             </div>
 

@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Post from './Components/Post'
 import { Button, TextField } from '@mui/material'
 import Header from '../../Shared/Components/Header'
+import PortalsUsername from '../../PortalsUsername'
 import { customGet, customPost } from '../../Utilitites/custom-fetch'
 export default function PostList() {
 
@@ -41,6 +42,7 @@ export default function PostList() {
 
             <Header></Header>
 
+            <PortalsUsername>Anshu</PortalsUsername>
 
             <TextField label="Heading" variant="outlined" value={heading} onChange={e => setHeading(e.target.value)} />
             <br></br>

@@ -1,11 +1,11 @@
 import { Avatar, Button, TextField } from '@mui/material'
 import React from 'react'
 import { useState } from 'react'
-import { customPatch, customPost } from '../../../Utilitites/custom-fetch.js'
+import { customGet, customPatch, customPost } from '../../../Utilitites/custom-fetch.js'
 export default function Post({ item }) {
 
     const [likes, setLikes] = useState(item.likes);
-    const [comments, setComments] = useState(item.comments);
+    const [comments, setComments] = useState([]);
 
     const [commentBox, setCommentBox] = useState('')
 
@@ -28,6 +28,13 @@ export default function Post({ item }) {
             commentText: commentBox
         }
         customPost(`/posts/${item._id}/comments`, obj)
+            .then(response => {
+                setComments(response.newComments)
+            })
+    }
+
+    function loadComments(){
+        customGet(`/posts/${item._id}/comments`)
             .then(response => {
                 setComments(response.newComments)
             })
@@ -61,9 +68,9 @@ export default function Post({ item }) {
                     </div>
                     <div>
                         <span>
-                            <i class="fa fa-comment-o" aria-hidden="true"></i>
+                            <i class="fa fa-comment-o" onClick={loadComments} aria-hidden="true"></i>
                         </span>
-                        <span>&nbsp;&nbsp;{comments.length}</span>
+                        <span>&nbsp;&nbsp;{comments.length || item.commentsCount}</span>
                         <ul>
                             {
                                 comments.map(c => <li>{c.commentText} - {c.username}</li>)

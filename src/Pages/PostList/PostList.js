@@ -12,14 +12,7 @@ export default function PostList() {
 
     const [posts, setPosts] = useState([])
 
-    function getAllPosts() {
-
-        customGet('/posts')
-            .then(response => {
-                setPosts(response.concat([]))
-            })
-
-    }
+    const [pageNumber,setPageNumber] = useState(1)
 
     function createPost() {
 
@@ -37,12 +30,19 @@ export default function PostList() {
             })
     }
 
+    function loadMore(){
+        customGet('/posts?page=' + pageNumber)
+        .then(response => {
+            setPageNumber(pageNumber+1)
+            setPosts(posts.concat(response))
+        })
+
+    }
+
     return (
         <div>
 
             <Header></Header>
-
-            <PortalsUsername>Anshu</PortalsUsername>
 
             <TextField label="Heading" variant="outlined" value={heading} onChange={e => setHeading(e.target.value)} />
             <br></br>
@@ -54,11 +54,12 @@ export default function PostList() {
             <Button variant="outlined" onClick={createPost}>Create Post</Button>
             <hr></hr>
             <div>
-                <Button variant="contained" onClick={getAllPosts}>Get All Posts</Button>
             </div>
             {
                 posts.map(item => <><Post item={item} /></>)
             }
+
+            <Button variant="contained" onClick={loadMore}>Load More...</Button>
         </div>
     )
 }

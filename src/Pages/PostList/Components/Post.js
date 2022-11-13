@@ -1,8 +1,11 @@
 import { Avatar, Button, TextField } from '@mui/material'
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react'
+import UserGlobalContext from '../../../Shared/Data/UserGlobalContext.js'
 import { customGet, customPatch, customPost } from '../../../Utilitites/custom-fetch.js'
 export default function Post({ item }) {
+
+    const {username} = useContext(UserGlobalContext)
 
     const [likes, setLikes] = useState([]);
     const [comments, setComments] = useState([]);
@@ -56,9 +59,10 @@ export default function Post({ item }) {
                 <h2>{item.heading}</h2>
                 <p>{item.content}</p>
                 <div className='action-container'>
-                    <TextField variant='outlined' label='Type Comment' value={commentBox} onChange={event => setCommentBox(event.target.value)} />
+                    <TextField variant='outlined' label={'Type Comment as ' + username } value={commentBox} onChange={event => setCommentBox(event.target.value)} />
                     <Button variant='contained' onClick={addComment}>Comment</Button>
                 </div>
+                
                 <div className='action-container'>
                     <div>
                         <span onClick={increaseLikes}>

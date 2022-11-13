@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { customGet, customPatch, customPost } from '../../../Utilitites/custom-fetch.js'
 export default function Post({ item }) {
 
-    const [likes, setLikes] = useState(item.likes);
+    const [likes, setLikes] = useState([]);
     const [comments, setComments] = useState([]);
 
     const [commentBox, setCommentBox] = useState('')
@@ -14,10 +14,10 @@ export default function Post({ item }) {
         let obj = {
             username: localStorage.getItem('usernameValue')
         }
-        customPatch(`/posts/${item._id}/like`, obj)
+        customPost(`/posts/${item._id}/likes`, obj)
             .then(response => {
                 //do something // create a state
-                setLikes(response.newLikes)
+                setLikes(response.likes)
 
                 //get all the post one more
             })
@@ -39,6 +39,13 @@ export default function Post({ item }) {
                 setComments(response.newComments)
             })
     }
+
+    function loadLikes(){
+        customGet(`/posts/${item._id}/likes`)
+        .then(response => {
+            setLikes(response.likes)
+        })
+    }
     return (
         <>
             <div className="post-item-container">
@@ -57,11 +64,11 @@ export default function Post({ item }) {
                         <span onClick={increaseLikes}>
                             <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
                         </span>
-                        <span>&nbsp;&nbsp;{likes}</span>
+                        <span onClick={loadLikes}>&nbsp;&nbsp;{likes.length || item.likes}</span>
 
                         <ul>
                             {
-                                item.likedUsers.map(monkey => <li>{monkey}</li>)
+                                likes.map(monkey => <li>{monkey.username}</li>)
                             }
                         </ul>
 

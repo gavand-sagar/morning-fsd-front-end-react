@@ -1,7 +1,9 @@
 import { Button, TextField } from '@mui/material'
 import React, { useContext } from 'react'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { changeGlobalUsername } from '../../counterSlice'
 import MyButton from '../../Shared/Components/MyButton'
 import UserGlobalContext from '../../Shared/Data/UserGlobalContext'
 import { customGet, customPost } from '../../Utilitites/custom-fetch'
@@ -9,6 +11,7 @@ import { customGet, customPost } from '../../Utilitites/custom-fetch'
 export default function Login() {
 
     const navigate = useNavigate()
+    const dispatch = useDispatch();
 
     const {setGlobalUsername} = useContext(UserGlobalContext);
 
@@ -23,7 +26,10 @@ export default function Login() {
 
                     if (response.result == true) {
                         // setting info in local-storage to have global access
-                        setGlobalUsername(username)
+                        //setGlobalUsername(username)
+
+                        dispatch(changeGlobalUsername(username))
+
                         localStorage.setItem('usernameValue', username)
                         localStorage.setItem('token',response.token)
                         ////  we want to change this line 

@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   value: 123,
-  email:"Sagar@abc.com"
+  email:"Sagar@abc.com",
+  userNameFromRedux:""
 }
 
 export const counterSlice = createSlice({
@@ -24,11 +25,14 @@ export const counterSlice = createSlice({
     },
     changeEmail: (state,action)=>{
         state.email = action.payload
+    },
+    changeGlobalUsername:(state,action)=>{
+        state.userNameFromRedux = action.payload 
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount,changeEmail } = counterSlice.actions
+export const { increment, decrement, incrementByAmount,changeEmail,changeGlobalUsername } = counterSlice.actions
 
 export default counterSlice.reducer
